@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../../css/dashboard.module.css";
+import styles from "../../css/Dashboard.module.css";
 
 function CreateEventForm({ onEventCreated }) {
   const [event, setEvent] = useState({
