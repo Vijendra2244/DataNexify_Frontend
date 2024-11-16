@@ -1,0 +1,185 @@
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  margin: 20px 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.eventTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  min-width: 600px;
+  border: 1px solid #ddd;
+}
+
+.eventTable th,
+.eventTable td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
+}
+
+.eventTable th {
+  background-color: #f8f9fa;
+  color: #333;
+  font-weight: 600;
+}
+
+.eventTable tr:hover {
+  background-color: #f5f5f5;
+  transition: background-color 0.3s ease;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+.dashboard {
+  text-align: center;
+  
+}
+.pageButton {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.pageButton:hover:not(:disabled) {
+  background-color: #f5f5f5;
+}
+
+.pageButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.activePage {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.modalOverlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modalContent {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-20px);
+  transition: all 0.3s ease-in-out;
+  width: 90%;
+  max-width: 500px;
+}
+
+.modalOverlay.active .modalContent {
+  transform: translateY(0);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.formParent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.submitButton {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 40%;
+  margin: auto;
+}
+
+.createEventBtn {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* Responsive styles for pagination */
+@media screen and (max-width: 480px) {
+  .pagination {
+    gap: 5px;
+  }
+
+  .pageButton {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .eventTable th,
+  .eventTable td {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .eventTable th,
+  .eventTable td {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+}
