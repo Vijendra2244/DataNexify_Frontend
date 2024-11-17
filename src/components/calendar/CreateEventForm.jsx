@@ -18,7 +18,6 @@ function CreateEventForm({ onEventCreated }) {
         throw new Error("Start and end times are required.");
       }
 
-
       const startDate = new Date(event.start);
       const endDate = new Date(event.end);
       const currentDate = new Date();
@@ -66,11 +65,9 @@ function CreateEventForm({ onEventCreated }) {
       const data = await response.json();
       if (data.msg === "Success") {
         console.log("Event created successfully:", data.event);
-        if (onEventCreated) {
-          onEventCreated(data.event);
-          setIsModalOpen(false);
-          setEvent({ name: "", start: "", end: "" });
-        }
+        onEventCreated(data.event);
+        setIsModalOpen(false);
+        setEvent({ name: "", start: "", end: "" });
       } else {
         console.error("Failed to create event:", data);
       }

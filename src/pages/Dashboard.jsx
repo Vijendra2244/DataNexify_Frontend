@@ -35,7 +35,6 @@ function Dashboard() {
   useEffect(() => {
     const fetchD = async () => {
       await fetchAuthToken();
-      await fetchEvent();
     };
     fetchD();
   }, []);
@@ -43,7 +42,7 @@ function Dashboard() {
     <div>
       <h1 className={styles.dashboard}>Dashbaord</h1>
       <CreateEventForm onEventCreated={fetchEvent} />
-      <EventList events={events} />
+      <EventList />
     </div>
   );
 }

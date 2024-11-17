@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../css/Dashboard.module.css";
 
-function EventList({ events }) {
+function EventList() {
+  const [events, setEvents] = useState([]);
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
@@ -13,6 +15,17 @@ function EventList({ events }) {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+  const fetchEvent = async () => {
+    const user = JSON.parse(localStorage.getItem("User"));
+    const response = await fetch(
+      `https://datanexify-assignment.onrender.com/event/users/get?googleId=${user.googleId}`
+    );
+    const data = await response.json();
+    if (data.events) {
+      setEvents(data.events);
+      localStorage.setItem("Events", JSON.stringify(data.events));
+    }
   };
 
   function formatDateTime(dateTimeStr) {
@@ -32,6 +45,13 @@ function EventList({ events }) {
 
     return date.toLocaleString("en-US", options);
   }
+
+  useEffect(() => {
+    const fetchEven = async () => {
+      await fetchEvent();
+    };
+    fetchEven();
+  }, [events]);
   return (
     <div className={styles.tableContainer}>
       <table className={styles.eventTable}>
