@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CreateEventForm from "../components/calendar/CreateEventForm";
 import EventList from "../components/calendar/EventList";
-import { useNavigate } from "react-router-dom";
 import styles from "../css/Dashboard.module.css";
 
 function Dashboard() {
   const [events, setEvents] = useState([]);
-  const navigate = useNavigate();
   const fetchEvent = async () => {
     const user = JSON.parse(localStorage.getItem("User"));
     const response = await fetch(

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../css/Dashboard.module.css";
+import { useNavigate } from "react-router-dom";
 
 function CreateEventForm({ onEventCreated }) {
   const [event, setEvent] = useState({
@@ -8,7 +9,8 @@ function CreateEventForm({ onEventCreated }) {
     end: "",
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -69,14 +71,58 @@ function CreateEventForm({ onEventCreated }) {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      const user = JSON.parse(localStorage.getItem("User"));
+      const googleId = user.googleId;
+      console.log(googleId, "goggsle id");
+      if (!googleId) {
+        console.error("No Google ID found in localStorage.");
+        return;
+      }
+
+      // Call the backend logout API
+      const response = await fetch(
+        "https://datanexify-assignment.onrender.com/auth/google/logout",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ googleId }),
+        }
+      );
+
+      const data = await response.json();
+      console.log(data, "data after logout ");
+      if (response.ok && data.msg === "Success") {
+        console.log("Logout successful:", data.data);
+
+        localStorage.removeItem("User");
+        localStorage.removeItem("Events");
+
+        navigate("/");
+      } else {
+        console.error("Logout failed:", data.error);
+      }
+    } catch (error) {
+      console.error("Error during logout:", error.message);
+    }
+  };
+
   return (
     <>
-      <button
-        className={styles.createEventBtn}
-        onClick={() => setIsModalOpen(true)}
-      >
-        Create Calendar Event
-      </button>
+      <div className={styles.btnParent}>
+        <button
+          className={styles.createEventBtn}
+          onClick={() => setIsModalOpen(true)}
+        >
+          Create Calendar Event
+        </button>
+        <button onClick={handleLogout} className={styles.logoutButton}>
+          Logout
+        </button>
+      </div>
       <div
         className={`${styles.modalOverlay} ${isModalOpen ? styles.active : ""}`}
       >
