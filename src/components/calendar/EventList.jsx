@@ -53,7 +53,7 @@ function EventList({ events: propEvents }) {
 
     if (propEvents) {
       setEvents(propEvents);
-      localStorage.setItem("Events", JSON.stringify(eventss));
+      localStorage.setItem("Events", JSON.stringify(propEvents));
     } else {
       fetchEven();
     }
