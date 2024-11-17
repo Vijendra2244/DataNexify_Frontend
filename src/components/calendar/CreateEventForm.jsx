@@ -18,6 +18,7 @@ function CreateEventForm({ onEventCreated }) {
         throw new Error("Start and end times are required.");
       }
 
+
       const startDate = new Date(event.start);
       const endDate = new Date(event.end);
       const currentDate = new Date();
@@ -65,12 +66,11 @@ function CreateEventForm({ onEventCreated }) {
       const data = await response.json();
       if (data.msg === "Success") {
         console.log("Event created successfully:", data.event);
-        const existingEvents = JSON.parse(localStorage.getItem("Events")) || [];
-        const updatedEvents = [...existingEvents, data.event];
-        localStorage.setItem("Events", JSON.stringify(updatedEvents));
-        onEventCreated(updatedEvents);
-        setIsModalOpen(false);
-        setEvent({ name: "", start: "", end: "" });
+        if (onEventCreated) {
+          onEventCreated(data.event);
+          setIsModalOpen(false);
+          setEvent({ name: "", start: "", end: "" });
+        }
       } else {
         console.error("Failed to create event:", data);
       }
@@ -83,6 +83,7 @@ function CreateEventForm({ onEventCreated }) {
     try {
       const user = JSON.parse(localStorage.getItem("User"));
       const googleId = user.googleId;
+      console.log(googleId, "goggsle id");
       if (!googleId) {
         console.error("No Google ID found in localStorage.");
         return;
@@ -100,6 +101,7 @@ function CreateEventForm({ onEventCreated }) {
       );
 
       const data = await response.json();
+      console.log(data, "data after logout ");
       if (response.ok && data.msg === "Success") {
         console.log("Logout successful:", data.data);
 
