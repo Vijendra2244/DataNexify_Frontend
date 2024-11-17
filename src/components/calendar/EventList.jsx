@@ -51,7 +51,7 @@ function EventList() {
       await fetchEvent();
     };
     fetchEven();
-  }, [events]);
+  }, []);
   return (
     <div className={styles.tableContainer}>
       <table className={styles.eventTable}>
