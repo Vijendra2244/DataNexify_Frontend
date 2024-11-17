@@ -14,14 +14,17 @@ function CreateEventForm({ onEventCreated }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("working");
+      // Check if required fields are provided
       if (!event.start || !event.end) {
         throw new Error("Start and end times are required.");
       }
 
-
+      // Validate the datetime format
       const startDate = new Date(event.start);
       const endDate = new Date(event.end);
       const currentDate = new Date();
+   
 
       if (startDate < currentDate) {
         alert("Cannot create events in the past. Please select a future date.");
@@ -89,6 +92,7 @@ function CreateEventForm({ onEventCreated }) {
         return;
       }
 
+      // Call the backend logout API
       const response = await fetch(
         "https://datanexify-assignment.onrender.com/auth/google/logout",
         {
