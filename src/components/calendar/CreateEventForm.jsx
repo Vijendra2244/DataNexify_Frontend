@@ -14,8 +14,6 @@ function CreateEventForm({ onEventCreated }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("working");
-      // Check if required fields are provided
       if (!event.start || !event.end) {
         throw new Error("Start and end times are required.");
       }
@@ -85,13 +83,11 @@ function CreateEventForm({ onEventCreated }) {
     try {
       const user = JSON.parse(localStorage.getItem("User"));
       const googleId = user.googleId;
-      console.log(googleId, "goggsle id");
       if (!googleId) {
         console.error("No Google ID found in localStorage.");
         return;
       }
 
-      // Call the backend logout API
       const response = await fetch(
         "https://datanexify-assignment.onrender.com/auth/google/logout",
         {
@@ -104,7 +100,6 @@ function CreateEventForm({ onEventCreated }) {
       );
 
       const data = await response.json();
-      console.log(data, "data after logout ");
       if (response.ok && data.msg === "Success") {
         console.log("Logout successful:", data.data);
 

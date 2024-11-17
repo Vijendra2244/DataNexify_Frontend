@@ -173,7 +173,6 @@
   background-color: #439bf9;
 }
 
-/* Responsive styles for pagination */
 @media screen and (max-width: 480px) {
   .pagination {
     gap: 5px;
@@ -185,7 +184,7 @@
   }
 }
 
-/* Responsive styles */
+
 @media screen and (max-width: 768px) {
   .eventTable th,
   .eventTable td {

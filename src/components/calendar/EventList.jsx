@@ -5,12 +5,10 @@ function EventList({ events }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  // Calculate the items for the current page
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = events.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Calculate total pages
   const totalPages = Math.ceil(events.length / itemsPerPage);
 
   const handlePageChange = (pageNumber) => {

@@ -1,27 +1,13 @@
 .main {
   width: 100%;
-  margin: auto;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: whitesmoke;
-  backdrop-filter: blur(100px);
-  animation: fadeIn 0.8s ease-in;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   position: relative;
   overflow: hidden;
-}
-
-.main::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  z-index: -1;
+  animation: fadeIn 0.8s ease-in;
 }
 
 @keyframes fadeIn {
@@ -37,7 +23,6 @@
 
 .parentForGoogleSignIn {
   border: 2px solid rgb(196, 192, 192);
-  border-radius: 6px;
   width: 25%;
   margin: auto;
   display: flex;
@@ -45,9 +30,13 @@
   justify-content: center;
   flex-direction: column;
   gap: 20px;
-  padding: 5px;
+  padding: 40px 30px;
   background-color: white;
   height: 200px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .IconsStylesForGoogle {
@@ -88,69 +77,69 @@
 
 @media (max-width: 1100px) {
   .parentForGoogleSignIn {
-    width: 40%; /* Increase width for smaller screens */
-    height: auto; /* Allow height to adjust based on content */
-    padding: 20px; /* Add padding for better spacing */
+    width: 40%;
+    height: auto;
+    padding: 20px;
   }
 }
 
 @media (max-width: 890px) {
   .parentForGoogleSignIn {
-    width: 30%; /* Increase width for smaller screens */
-    height: auto; /* Allow height to adjust based on content */
-    padding: 20px; /* Add padding for better spacing */
+    width: 30%;
+    height: auto;
+    padding: 20px;
   }
 
   .tagLine {
-    font-size: 14px; /* Slightly smaller font size for tagline */
-    text-align: center; /* Center-align the text */
+    font-size: 14px;
+    text-align: center;
   }
 
   .btnForGoogleSingIn {
-    font-size: 14px; /* Adjust button font size */
+    font-size: 14px;
     padding-left: 15px;
     padding-right: 15px;
   }
 
   .textForGoogleSignIn {
-    font-size: 14px; /* Smaller text size */
+    font-size: 14px;
   }
 }
 
 @media (max-width: 768px) {
   .parentForGoogleSignIn {
-    width: 80%; /* Increase width for smaller screens */
-    height: auto; /* Allow height to adjust based on content */
-    padding: 20px; /* Add padding for better spacing */
+    width: 80%;
+    height: auto;
+    padding: 20px;
   }
 
   .tagLine {
-    font-size: 14px; /* Slightly smaller font size for tagline */
-    text-align: center; /* Center-align the text */
+    font-size: 14px;
+    text-align: center;
   }
 
   .btnForGoogleSingIn {
-    font-size: 14px; /* Adjust button font size */
+    font-size: 14px;
     padding-left: 15px;
     padding-right: 15px;
   }
 
   .textForGoogleSignIn {
-    font-size: 14px; /* Smaller text size */
+    font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
   .parentForGoogleSignIn {
-    width: 90%; /* Almost full width on very small screens */
+    width: 90%;
   }
 
   .IconsStylesForGoogle {
-    padding: 10px; /* Slightly larger icon padding for clarity */
+    padding: 10px;
   }
 
   .textForGoogleSignIn {
-    font-size: 12px; /* Adjust font size for smaller screens */
+    font-size: 12px;
   }
 
   .btnForGoogleSingIn {
