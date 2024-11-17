@@ -20,9 +20,19 @@ function CreateEventForm({ onEventCreated }) {
         throw new Error("Start and end times are required.");
       }
 
-      // Validate the datetime format
+
       const startDate = new Date(event.start);
       const endDate = new Date(event.end);
+      const currentDate = new Date();
+
+      if (startDate < currentDate) {
+        alert("Cannot create events in the past. Please select a future date.");
+        return;
+      }
+      if (endDate <= startDate) {
+        alert("End date must be after the start date.");
+        return;
+      }
 
       if (isNaN(startDate) || isNaN(endDate)) {
         throw new Error(

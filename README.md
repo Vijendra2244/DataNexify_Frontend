@@ -30,6 +30,6 @@ This is the frontend application for the **Google Calendar Integration** project
 Ensure you have the following installed:
 
 - **Node.js**: Version 14 or above.
-- **npm** or **yarn**: For managing dependencies.
+- **npm** : For managing dependencies.
 
 ---
