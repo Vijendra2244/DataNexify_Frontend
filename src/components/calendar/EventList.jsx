@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../css/Dashboard.module.css";
 
-function EventList() {
+function EventList({ eventss }) {
   const [events, setEvents] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -51,6 +51,10 @@ function EventList() {
       await fetchEvent();
     };
     fetchEven();
+    if (eventss) {
+      setEvents(eventss);
+      localStorage.setItem("Events", JSON.stringify(eventss));
+    }
   }, []);
   return (
     <div className={styles.tableContainer}>

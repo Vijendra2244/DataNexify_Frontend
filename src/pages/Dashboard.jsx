@@ -42,7 +42,7 @@ function Dashboard() {
     <div>
       <h1 className={styles.dashboard}>Dashbaord</h1>
       <CreateEventForm onEventCreated={fetchEvent} />
-      <EventList />
+      <EventList eventss={events} />
     </div>
   );
 }
