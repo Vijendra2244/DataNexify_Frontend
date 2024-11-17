@@ -4,11 +4,9 @@ import styles from "../../css/Dashboard.module.css";
 function EventList({ events }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = events.slice(indexOfFirstItem, indexOfLastItem);
-
   const totalPages = Math.ceil(events.length / itemsPerPage);
 
   const handlePageChange = (pageNumber) => {

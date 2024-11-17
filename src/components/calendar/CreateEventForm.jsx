@@ -24,7 +24,6 @@ function CreateEventForm({ onEventCreated }) {
       const startDate = new Date(event.start);
       const endDate = new Date(event.end);
       const currentDate = new Date();
-   
 
       if (startDate < currentDate) {
         alert("Cannot create events in the past. Please select a future date.");
@@ -53,7 +52,7 @@ function CreateEventForm({ onEventCreated }) {
       };
 
       const response = await fetch(
-        `https://datanexify-assignment.onrender.com/event/calendar/create`,
+        "https://datanexify-assignment.onrender.com/event/calendar/create",
         {
           method: "POST",
           headers: {
@@ -67,10 +66,10 @@ function CreateEventForm({ onEventCreated }) {
       );
 
       const data = await response.json();
+      console.log(data, "data coming ");
       if (data.msg === "Success") {
-        console.log("Event created successfully:", data.event);
         if (onEventCreated) {
-          onEventCreated(data.event);
+          await onEventCreated(data.data);
           setIsModalOpen(false);
           setEvent({ name: "", start: "", end: "" });
         }

@@ -17,6 +17,11 @@ function Dashboard() {
     }
   };
 
+  const handleEventCreated = (newEvent) => {
+    setEvents((prevEvents) => {
+      return [newEvent, ...prevEvents];
+    });
+  };
   const fetchAuthToken = async () => {
     try {
       const urlParamsSearch = new URLSearchParams(window.location.search);
@@ -24,7 +29,6 @@ function Dashboard() {
 
       if (userString) {
         const user = JSON.parse(decodeURIComponent(userString));
-        console.log(user, "decoded user info");
         localStorage.setItem("User", JSON.stringify(user));
       }
     } catch (error) {
@@ -42,8 +46,8 @@ function Dashboard() {
   return (
     <div>
       <h1 className={styles.dashboard}>Dashbaord</h1>
-      <CreateEventForm onEventCreated={fetchEvent} />
-      <EventList events={events}  />
+      <CreateEventForm onEventCreated={handleEventCreated} />
+      <EventList events={events} />
     </div>
   );
 }
