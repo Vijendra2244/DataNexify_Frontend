@@ -37,11 +37,6 @@ function Dashboard() {
       await fetchAuthToken();
       await fetchEvent();
     };
-    const cachedEvents = localStorage.getItem("Events");
-    if (cachedEvents) {
-      setEvents(JSON.parse(cachedEvents));
-    }
-
     fetchD();
   }, []);
   return (
