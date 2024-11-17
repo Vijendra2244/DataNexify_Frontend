@@ -65,9 +65,11 @@ function CreateEventForm({ onEventCreated }) {
       const data = await response.json();
       if (data.msg === "Success") {
         console.log("Event created successfully:", data.event);
-        onEventCreated(data.event);
-        setIsModalOpen(false);
-        setEvent({ name: "", start: "", end: "" });
+        if (onEventCreated) {
+          onEventCreated(data.event);
+          setIsModalOpen(false);
+          setEvent({ name: "", start: "", end: "" });
+        }
       } else {
         console.error("Failed to create event:", data);
       }
