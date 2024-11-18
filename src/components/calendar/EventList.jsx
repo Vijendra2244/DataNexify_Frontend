@@ -50,12 +50,6 @@ function EventList({ events }) {
               <td>{formatDateTime(eve?.end?.dateTime)}</td>
             </tr>
           ))}
-          <tr>
-            <td>{"No Email"}</td>
-            <td>{"No Title"}</td>
-            <td>{"No date available"}</td>
-            <td>{"No date available"}</td>
-          </tr>
         </tbody>
       </table>
       <div className={styles.pagination}>
