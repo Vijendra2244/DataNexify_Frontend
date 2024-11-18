@@ -2,15 +2,18 @@
   width: 100%;
   overflow-x: auto;
   margin: 20px 0;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  background: white;
+  padding: 1rem;
 }
 
 .eventTable {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
   background-color: white;
   min-width: 600px;
+  border-spacing: 0;
   border: 1px solid #ddd;
 }
 
@@ -23,16 +26,26 @@
 }
 
 .eventTable th {
-  background-color: #f8f9fa;
-  color: #333;
+  background-color: #f8fafc;
+  color: #64748b;
   font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
 }
 
-.eventTable tr:hover {
-  background-color: #f5f5f5;
-  transition: background-color 0.3s ease;
+.eventTable tr:last-child td {
+  border-bottom: none;
 }
 
+.eventTable tbody tr {
+  transition: all 0.2s ease;
+}
+
+.eventTable tbody tr:hover {
+  background-color: #f8fafc;
+  transform: translateY(-1px);
+}
 .pagination {
   display: flex;
   justify-content: center;
@@ -44,29 +57,41 @@
   text-align: center;
 }
 .pageButton {
-  padding: 8px 12px;
-  border: 1px solid #ddd;
+  padding: 8px 16px;
+  border: 2px solid #e2e8f0;
   background-color: white;
   cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  color: #64748b;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .pageButton:hover:not(:disabled) {
-  background-color: #f5f5f5;
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
 }
 
 .pageButton:disabled {
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: 0.6;
+  background-color: #f1f5f9;
 }
 
 .activePage {
-  background-color: #007bff;
+  background-color: #3b82f6;
   color: white;
-  border-color: #007bff;
+  border-color: #3b82f6;
+  font-weight: 600;
 }
 
+.activePage:hover {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+}
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -135,42 +160,41 @@
   border-radius: 4px;
 }
 
+.createEventBtn,
+.logoutButton,
 .submitButton {
-  background-color: #007bff;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 40%;
-  margin: auto;
-}
-
-.createEventBtn {
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
+  padding: 0.625rem 1.25rem;
+  background-color: #3b82f6;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+  /* text-transform: uppercase; */
+  letter-spacing: 0.5px;
+  font-size: 0.875rem;
 }
 .btnParent {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.logoutButton {
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+
+.createEventBtn:hover,
+.logoutButton:hover,
+.submitButton:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(59, 130, 246, 0.25);
 }
 
-.logoutButton:hover,
-.createEventBtn:hover {
-  background-color: #439bf9;
+.createEventBtn:active,
+.logoutButton:active,
+.submitButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
 }
 
 @media screen and (max-width: 480px) {
@@ -183,7 +207,6 @@
     font-size: 14px;
   }
 }
-
 
 @media screen and (max-width: 768px) {
   .eventTable th,
